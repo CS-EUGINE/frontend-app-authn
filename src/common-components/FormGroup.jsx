@@ -20,26 +20,30 @@ const FormGroup = (props) => {
     if (props.handleBlur) { props.handleBlur(e); }
   };
 
+  const controlProps = {
+    as: props.as,
+    readOnly: props.readOnly,
+    type: props.type,
+    'aria-invalid': props.errorMessage !== '',
+    className: 'form-group__form-field',
+    autoComplete: props.autoComplete,
+    spellCheck: props.spellCheck,
+    name: props.name,
+    value: props.value,
+    onFocus: handleFocus,
+    onBlur: handleOnBlur,
+    onClick: handleClick,
+    onChange: props.handleChange,
+    controlClassName: props.borderClass,
+    trailingElement: props.trailingElement,
+    floatingLabel: props.floatingLabel || undefined,
+    placeholder: props.placeholder,
+  };
+
   return (
     <Form.Group controlId={props.name} className={props.className} isInvalid={props.errorMessage !== ''}>
-      <Form.Control
-        as={props.as}
-        readOnly={props.readOnly}
-        type={props.type}
-        aria-invalid={props.errorMessage !== ''}
-        className="form-group__form-field"
-        autoComplete={props.autoComplete}
-        spellCheck={props.spellCheck}
-        name={props.name}
-        value={props.value}
-        onFocus={handleFocus}
-        onBlur={handleOnBlur}
-        onClick={handleClick}
-        onChange={props.handleChange}
-        controlClassName={props.borderClass}
-        trailingElement={props.trailingElement}
-        floatingLabel={props.floatingLabel}
-      >
+      {!props.floatingLabel && <Form.Label className="tw:text-[#6751B8]">{props.label}</Form.Label>}
+      <Form.Control {...controlProps}>
         {props.options ? props.options() : null}
       </Form.Control>
       <TransitionReplace>

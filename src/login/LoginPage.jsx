@@ -33,7 +33,7 @@ import { thirdPartyAuthContextSelector } from '../common-components/data/selecto
 import EnterpriseSSO from '../common-components/EnterpriseSSO';
 import ThirdPartyAuth from '../common-components/ThirdPartyAuth';
 import {
-  DEFAULT_STATE, PENDING_STATE, RESET_PAGE,
+  DEFAULT_STATE, PENDING_STATE, REGISTER_PAGE, RESET_PAGE,
 } from '../data/constants';
 import {
   getActivationStatus,
@@ -209,7 +209,7 @@ const LoginPage = (props) => {
         redirectUrl={loginResult.redirectUrl}
         finishAuthUrl={finishAuthUrl}
       />
-      <div className="mw-xs mt-3 mb-2">
+      <div className="mt-3 mb-2">
         <LoginFailureMessage
           errorCode={errorCode.type}
           errorCount={errorCode.count}
@@ -231,7 +231,9 @@ const LoginPage = (props) => {
             handleChange={handleOnChange}
             handleFocus={handleOnFocus}
             errorMessage={errors.emailOrUsername}
-            floatingLabel={formatMessage(messages['login.user.identity.label'])}
+            label={formatMessage(messages['login.user.email.label'])}
+            placeholder={formatMessage(messages['login.user.email.placeholder'])}
+            className={"mb-2"}
           />
           <PasswordField
             name="password"
@@ -242,14 +244,25 @@ const LoginPage = (props) => {
             handleChange={handleOnChange}
             handleFocus={handleOnFocus}
             errorMessage={errors.password}
-            floatingLabel={formatMessage(messages['login.password.label'])}
+            label={formatMessage(messages['login.password.label'])}
+            placeholder={formatMessage(messages['login.password.placeholder'])}
+            className="mb-2"
           />
+          <div className="mb-2.5">
+            <Link
+              id="forgot-password"
+              name="forgot-password"
+              className="font-weight-500 text-body tw:!pl-0 small"
+              to={updatePathWithQueryParams(RESET_PAGE)}
+              onClick={trackForgotPasswordLinkClick}
+            >
+              {formatMessage(messages['forgot.password'])}
+            </Link>
+          </div>
           <StatefulButton
             name="sign-in"
             id="sign-in"
             type="submit"
-            variant="brand"
-            className="login-button-width"
             state={submitState}
             labels={{
               default: formatMessage(messages['sign.in.button']),
@@ -257,16 +270,19 @@ const LoginPage = (props) => {
             }}
             onClick={handleSubmit}
             onMouseDown={(event) => event.preventDefault()}
+            className="tw:w-full tw:font-semibold tw:h-[60px] tw:bg-[#2648E4] tw:text-white tw:text-[24px] tw:rounded-[8px] tw:hover:bg-blue-700 tw:transition tw:mb-3"
           />
-          <Link
-            id="forgot-password"
-            name="forgot-password"
-            className="btn btn-link font-weight-500 text-body"
-            to={updatePathWithQueryParams(RESET_PAGE)}
-            onClick={trackForgotPasswordLinkClick}
-          >
-            {formatMessage(messages['forgot.password'])}
-          </Link>
+          <p className="text-center small tw:text-gray-600">
+            Do not have an account? Sign up{' '}
+            <Link
+              id="forgot-password"
+              name="forgot-password"
+              className="tw:text-blue-500 tw:hover:underline"
+              to={updatePathWithQueryParams(REGISTER_PAGE)}
+            >
+              here
+            </Link>
+          </p>
           <ThirdPartyAuth
             currentProvider={currentProvider}
             providers={providers}

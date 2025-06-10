@@ -8,12 +8,12 @@ const messages = defineMessages({
   },
   'forgot.password.page.heading': {
     id: 'forgot.password.page.heading',
-    defaultMessage: 'Reset password',
+    defaultMessage: 'Forgot Password?',
     description: 'The page heading for the forgot password page.',
   },
   'forgot.password.page.instructions': {
     id: 'forgot.password.page.instructions',
-    defaultMessage: 'Please enter your email address below and we will send you an email with instructions on how to reset your password.',
+    defaultMessage: 'Please enter your email address below and we will send a recovery email to you.',
     description: 'Instructions message for forgot password page.',
   },
   'forgot.password.page.invalid.email.message': {
@@ -23,12 +23,17 @@ const messages = defineMessages({
   },
   'forgot.password.page.email.field.label': {
     id: 'forgot.password.page.email.field.label',
-    defaultMessage: 'Email',
-    description: 'Email field label for the forgot password page.',
+    defaultMessage: 'Email Address',
+    description: 'Email address field label for the forgot password page.',
+  },
+  'forgot.password.page.email.field.placeholder': {
+    id: 'forgot.password.page.email.field.placeholder',
+    defaultMessage: 'Enter your email',
+    description: 'Placeholder for email field.',
   },
   'forgot.password.page.submit.button': {
     id: 'forgot.password.page.submit.button',
-    defaultMessage: 'Submit',
+    defaultMessage: 'Recover My Password',
     description: 'Submit button text for the forgot password page.',
   },
   'forgot.password.error.alert.title': {

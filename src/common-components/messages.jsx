@@ -13,10 +13,20 @@ const messages = defineMessages({
     defaultMessage: 'Sign in',
     description: 'Text that appears on the tab to switch between login and register',
   },
+  'logistration.sign.in.heading': {
+    id: 'logistration.sign.in.heading',
+    defaultMessage: 'Log In To Your Account',
+    description: 'Text heading for sign in',
+  },
   'logistration.register': {
     id: 'logistration.register',
     defaultMessage: 'Register',
     description: 'Text that appears on the tab to switch between login and register',
+  },
+  'logistration.register.heading': {
+    id: 'logistration.register.heading',
+    defaultMessage: 'Welcome to CloudSwyft LMS',
+    description: 'Text heading for register',
   },
   // enterprise sso strings
   'enterprisetpa.title.heading': {

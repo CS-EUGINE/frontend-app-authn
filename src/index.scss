@@ -4,3 +4,9 @@
 @import "~@edx/brand/paragon/overrides";
 
 @import "sass/style";
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
+
+body {
+  font-family: 'Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

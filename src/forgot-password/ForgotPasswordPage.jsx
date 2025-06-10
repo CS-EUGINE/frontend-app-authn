@@ -105,59 +105,44 @@ const ForgotPasswordPage = (props) => {
         <Tabs activeKey="" id="controlled-tab" onSelect={(key) => navigate(updatePathWithQueryParams(key))}>
           <Tab title={tabTitle} eventKey={LOGIN_PAGE} />
         </Tabs>
-        <div id="main-content" className="main-content">
-          <Form id="forget-password-form" name="forget-password-form" className="mw-xs">
-            <ForgotPasswordAlert email={bannerEmail} emailError={formErrors} status={status} />
-            <h2 className="h4">
-              {formatMessage(messages['forgot.password.page.heading'])}
-            </h2>
-            <p className="mb-4">
-              {formatMessage(messages['forgot.password.page.instructions'])}
-            </p>
-            <FormGroup
-              floatingLabel={formatMessage(messages['forgot.password.page.email.field.label'])}
-              name="email"
-              value={email}
-              autoComplete="on"
-              errorMessage={validationError}
-              handleChange={(e) => setEmail(e.target.value)}
-              handleBlur={handleBlur}
-              handleFocus={handleFocus}
-              helpText={[formatMessage(messages['forgot.password.email.help.text'], { platformName })]}
-            />
-            <StatefulButton
-              id="submit-forget-password"
-              name="submit-forget-password"
-              type="submit"
-              variant="brand"
-              className="forgot-password--button"
-              state={submitState}
-              labels={{
-                default: formatMessage(messages['forgot.password.page.submit.button']),
-                pending: '',
-              }}
-              onClick={handleSubmit}
-              onMouseDown={(e) => e.preventDefault()}
-            />
-            {(getConfig().LOGIN_ISSUE_SUPPORT_LINK) && (
-              <Hyperlink
-                id="forgot-password"
-                name="forgot-password"
-                className="ml-4 font-weight-500 text-body"
-                destination={getConfig().LOGIN_ISSUE_SUPPORT_LINK}
-                target="_blank"
-                showLaunchIcon={false}
-              >
-                {formatMessage(messages['need.help.sign.in.text'])}
-              </Hyperlink>
-            )}
-            <p className="mt-5.5 small text-gray-700">
-              {formatMessage(messages['additional.help.text'], { platformName })}
-              <span>
-                <Hyperlink isInline destination={`mailto:${getConfig().INFO_EMAIL}`}>{getConfig().INFO_EMAIL}</Hyperlink>
-              </span>
-            </p>
-          </Form>
+        <div id="main-content" className="main-content tw:flex tw:h-9/10 tw:flex-row tw:relative">
+          <div className="tw:flex-1 tw:flex tw:items-center tw:justify-center tw:bg-white tw:p-8">
+            <Form id="forget-password-form" name="forget-password-form" className="mw-xs tw:w-full tw:max-w-[590px]">
+              <ForgotPasswordAlert email={bannerEmail} emailError={formErrors} status={status} />
+              <h2 className="tw:text-[48px] tw:font-semibold tw:text-[#2E2579] tw:mb-3">
+                {formatMessage(messages['forgot.password.page.heading'])}
+              </h2>
+              <p className="mb-4">
+                {formatMessage(messages['forgot.password.page.instructions'])}
+              </p>
+              <FormGroup
+                label={formatMessage(messages['forgot.password.page.email.field.label'])}
+                placeholder={formatMessage(messages['forgot.password.page.email.field.placeholder'])}
+                name="email"
+                value={email}
+                autoComplete="on"
+                errorMessage={validationError}
+                handleChange={(e) => setEmail(e.target.value)}
+                handleBlur={handleBlur}
+                handleFocus={handleFocus}
+                helpText={[formatMessage(messages['forgot.password.email.help.text'], { platformName })]}
+              />
+              <StatefulButton
+                id="submit-forget-password"
+                name="submit-forget-password"
+                type="submit"
+                className="forgot-password--button tw:w-full tw:h-[60px] tw:bg-[#2648E4] tw:hover:bg-[#2E2579] tw:transition"
+                state={submitState}
+                labels={{
+                  default: formatMessage(messages['forgot.password.page.submit.button']),
+                  pending: '',
+                }}
+                onClick={handleSubmit}
+                onMouseDown={(e) => e.preventDefault()}
+              />
+            </Form>
+          </div>
+          
         </div>
       </div>
     </BaseContainer>

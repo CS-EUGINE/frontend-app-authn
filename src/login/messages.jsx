@@ -12,19 +12,34 @@ const messages = defineMessages({
     defaultMessage: 'Username or email',
     description: 'Label for user identity field to enter either username or email to login',
   },
+  'login.user.email.label': {
+    id: 'login.user.email.label',
+    defaultMessage: "Email Address",
+    description: 'Label for email field',
+  },
+  'login.user.email.placeholder': {
+    id: 'login.user.email.placeholder',
+    defaultMessage: 'Enter your email',
+    description: 'Placeholder for email field',
+  },
   'login.password.label': {
     id: 'login.password.label',
     defaultMessage: 'Password',
     description: 'Label for password field',
   },
+  'login.password.placeholder': {
+    id: 'login.password.placeholder',
+    defaultMessage: 'Enter your password',
+    description: 'Placeholder for password field',
+  },
   'sign.in.button': {
     id: 'sign.in.button',
-    defaultMessage: 'Sign in',
+    defaultMessage: 'Log in',
     description: 'Sign in button label that appears on login page',
   },
   'forgot.password': {
     id: 'forgot.password',
-    defaultMessage: 'Forgot password',
+    defaultMessage: 'Forgot Password?',
     description: 'Button text for forgot password',
   },
   'institution.login.button': {
