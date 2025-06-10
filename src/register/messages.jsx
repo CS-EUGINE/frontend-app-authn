@@ -19,7 +19,7 @@ const messages = defineMessages({
   },
   'registration.username.label': {
     id: 'registration.username.label',
-    defaultMessage: 'Public username',
+    defaultMessage: 'Username',
     description: 'Label that appears above username field',
   },
   'registration.password.label': {
@@ -200,6 +200,27 @@ const messages = defineMessages({
     id: 'did.you.mean.alert.text',
     defaultMessage: 'Did you mean',
     description: 'Did you mean alert suggestion',
+  },
+  // Placeholders
+  'registration.fullname.placeholder': {
+    id: 'registration.fullname.placeholder',
+    defaultMessage: 'Enter your full name',
+    description: 'Placeholder that appears on full name field',
+  },
+  'registration.email.placeholder': {
+    id: 'registration.email.placeholder',
+    defaultMessage: 'Enter your email',
+    description: 'Placeholder that appears on email field',
+  },
+  'registration.username.placeholder': {
+    id: 'registration.username.placeholder',
+    defaultMessage: 'Enter your username',
+    description: 'Placeholder that appears on username field',
+  },
+  'registration.password.placeholder': {
+    id: 'registration.password.placeholder',
+    defaultMessage: 'Enter your password',
+    description: 'Placeholder that appears on password field',
   },
 });
 

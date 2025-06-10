@@ -116,24 +116,32 @@ const PasswordField = (props) => {
     </Tooltip>
   );
 
+  const controlProps = {
+    as: "input",
+    className: "form-group__form-field",
+    type: isPasswordHidden ? 'password' : 'text',
+    name: props.name,
+    value: props.value,
+    autoComplete: props.autoComplete,
+    'aria-invalid': props.errorMessage !== '',
+    onFocus: handleFocus,
+    onBlur: handleBlur,
+    onChange: props.handleChange,
+    controlClassName: props.borderClass,
+    trailingElement: isPasswordHidden ? ShowButton : HideButton,
+    floatingLabel: props.floatingLabel || undefined,
+    placeholder: props.placeholder,
+  }
+
   return (
-    <Form.Group controlId={props.name} isInvalid={props.errorMessage !== ''}>
+    <Form.Group controlId={props.name} isInvalid={props.errorMessage !== ''} className={props.className}>
       <OverlayTrigger key="tooltip" placement={placement} overlay={tooltip} show={showTooltip}>
-        <Form.Control
-          as="input"
-          className="form-group__form-field"
-          type={isPasswordHidden ? 'password' : 'text'}
-          name={props.name}
-          value={props.value}
-          autoComplete={props.autoComplete}
-          aria-invalid={props.errorMessage !== ''}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={props.handleChange}
-          controlClassName={props.borderClass}
-          trailingElement={isPasswordHidden ? ShowButton : HideButton}
-          floatingLabel={props.floatingLabel}
-        />
+        <>
+          {!props.floatingLabel && <Form.Label className="tw:text-[#6751B8]">{props.label}</Form.Label>}
+          <Form.Control
+            {...controlProps}
+          />
+        </>
       </OverlayTrigger>
       {props.errorMessage !== '' && (
         <Form.Control.Feedback key="error" className="form-text-size" hasIcon={false} feedback-for={props.name} type="invalid">

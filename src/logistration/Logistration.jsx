@@ -124,28 +124,37 @@ const Logistration = (props) => {
                   </Tabs>
                 )
                 : (!isValidTpaHint() && !hideRegistrationLink && (
-                  <Tabs defaultActiveKey={selectedPage} id="controlled-tab" onSelect={(tabKey) => handleOnSelect(tabKey, selectedPage)}>
-                    <Tab title={formatMessage(messages['logistration.register'])} eventKey={REGISTER_PAGE} />
-                    <Tab title={formatMessage(messages['logistration.sign.in'])} eventKey={LOGIN_PAGE} />
-                  </Tabs>
+                  <></>
+                  // <Tabs defaultActiveKey={selectedPage} id="controlled-tab" onSelect={(tabKey) => handleOnSelect(tabKey, selectedPage)}>
+                  //   <Tab title={formatMessage(messages['logistration.register'])} eventKey={REGISTER_PAGE} />
+                  //   <Tab title={formatMessage(messages['logistration.sign.in'])} eventKey={LOGIN_PAGE} />
+                  // </Tabs>
                 ))}
               { key && (
                 <Navigate to={updatePathWithQueryParams(key)} replace />
               )}
-              <div id="main-content" className="main-content">
-                {!institutionLogin && !isValidTpaHint() && hideRegistrationLink && (
-                  <h3 className="mb-4.5">
-                    {formatMessage(messages[selectedPage === LOGIN_PAGE ? 'logistration.sign.in' : 'logistration.register'])}
-                  </h3>
-                )}
-                {selectedPage === LOGIN_PAGE
-                  ? <LoginPage institutionLogin={institutionLogin} handleInstitutionLogin={handleInstitutionLogin} />
-                  : (
-                    <RegistrationPage
-                      institutionLogin={institutionLogin}
-                      handleInstitutionLogin={handleInstitutionLogin}
-                    />
-                  )}
+              <div id="main-content" className="main-content tw:flex tw:min-h-screen tw:flex-col tw:md:flex-row">
+                <div className='tw:flex-1 tw:flex tw:items-center tw:justify-center tw:bg-white tw:p-8 tw:overflow-y-auto'>
+                  <div className='tw:w-full tw:max-w-[590px]'>
+                    {!institutionLogin && !isValidTpaHint() && hideRegistrationLink ? (
+                      <h3 className="mb-4.5">
+                        {formatMessage(messages[selectedPage === LOGIN_PAGE ? 'logistration.sign.in' : 'logistration.register'])}
+                      </h3>
+                    ): (
+                      <h2 className="tw:text-[42px] tw:font-semibold tw:text-[#6751B8] tw:mb-6 tw:text-left">
+                        {formatMessage(messages[selectedPage === LOGIN_PAGE ? 'logistration.sign.in.heading': 'logistration.register.heading'])}
+                      </h2>
+                    )}
+                    {selectedPage === LOGIN_PAGE
+                      ? <LoginPage institutionLogin={institutionLogin} handleInstitutionLogin={handleInstitutionLogin} />
+                      : (
+                        <RegistrationPage
+                          institutionLogin={institutionLogin}
+                          handleInstitutionLogin={handleInstitutionLogin}
+                        />
+                      )}
+                  </div>
+                </div>
               </div>
             </div>
           )}

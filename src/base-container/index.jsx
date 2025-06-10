@@ -39,8 +39,10 @@ const BaseContainer = ({ children, showWelcomeBanner, fullName }) => {
 
   return (
     <>
-      <div className="col-md-12 extra-large-screen-top-stripe" />
       <div className="layout">
+        <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
+          {children}
+        </div>
         <MediaQuery maxWidth={breakpoints.small.maxWidth - 1}>
           {showWelcomeBanner ? <AuthSmallLayout fullName={fullName} /> : <DefaultSmallLayout />}
         </MediaQuery>
@@ -50,9 +52,7 @@ const BaseContainer = ({ children, showWelcomeBanner, fullName }) => {
         <MediaQuery minWidth={breakpoints.extraLarge.minWidth}>
           {showWelcomeBanner ? <AuthLargeLayout fullName={fullName} /> : <DefaultLargeLayout />}
         </MediaQuery>
-        <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
-          {children}
-        </div>
+        
       </div>
     </>
   );
