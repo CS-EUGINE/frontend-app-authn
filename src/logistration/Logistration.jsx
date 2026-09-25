@@ -25,6 +25,7 @@ import {
   getTpaHint, getTpaProvider, updatePathWithQueryParams,
 } from '../data/utils';
 import { LoginPage } from '../login';
+import PoweredBy from './PoweredBy';
 import { backupLoginForm } from '../login/data/actions';
 import { RegistrationPage } from '../register';
 import { backupRegistrationForm } from '../register/data/actions';
@@ -141,7 +142,7 @@ const Logistration = (props) => {
                         {formatMessage(messages[selectedPage === LOGIN_PAGE ? 'logistration.sign.in' : 'logistration.register'])}
                       </h3>
                     ): (
-                      <h2 className="tw:text-[42px] tw:font-semibold tw:text-[#6751B8] tw:mb-6 tw:text-left">
+                      <h2 className="tw:text-[42px] tw:font-semibold tw:text-[#15376D] tw:mb-6 tw:text-left">
                         {formatMessage(messages[selectedPage === LOGIN_PAGE ? 'logistration.sign.in.heading': 'logistration.register.heading'])}
                       </h2>
                     )}
@@ -153,6 +154,7 @@ const Logistration = (props) => {
                           handleInstitutionLogin={handleInstitutionLogin}
                         />
                       )}
+                    <PoweredBy />
                   </div>
                 </div>
               </div>

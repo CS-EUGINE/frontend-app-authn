@@ -273,7 +273,7 @@ const LoginPage = (props) => {
             className="tw:w-full tw:font-semibold tw:h-[60px] tw:bg-[#2648E4] tw:text-white tw:text-[24px] tw:rounded-[8px] tw:hover:bg-blue-700 tw:transition tw:mb-3"
           />
           <p className="text-center small tw:text-gray-600">
-            Do not have an account? Sign up{' '}
+            No account yet? Sign up{' '}
             <Link
               id="forgot-password"
               name="forgot-password"
