@@ -87,6 +87,7 @@ const FormFieldRenderer = (props) => {
             onBlur={handleOnBlur}
             onFocus={handleFocus}
           />
+          {fieldData.instructions && <Form.Text>{fieldData.instructions}</Form.Text>}
           {isRequired && errorMessage && (
             <Form.Control.Feedback id={`${fieldData.name}-error`} type="invalid" className="form-text-size" hasIcon={false}>
               {errorMessage}

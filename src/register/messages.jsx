@@ -37,6 +37,26 @@ const messages = defineMessages({
     defaultMessage: 'I agree that {siteName} may send me marketing messages.',
     description: 'Text for opt in option on register page.',
   },
+  'registration.organization.section.title': {
+    id: 'registration.organization.section.title',
+    defaultMessage: 'Tell us about your school',
+    description: 'Heading for the organization lead-capture section on registration.',
+  },
+  'registration.organization.section.description': {
+    id: 'registration.organization.section.description',
+    defaultMessage: 'Choose your organization. If it is not listed, select Other and enter your school or university name.',
+    description: 'Help text for the organization lead-capture section on registration.',
+  },
+  'registration.school.name.label': {
+    id: 'registration.school.name.label',
+    defaultMessage: 'School or university name',
+    description: 'Label for the school or university name field.',
+  },
+  'registration.school.name.instructions': {
+    id: 'registration.school.name.instructions',
+    defaultMessage: 'We use this to connect you with the right learning experience.',
+    description: 'Help text for the school or university name field.',
+  },
   // Help text
   'help.text.name': {
     id: 'help.text.name',

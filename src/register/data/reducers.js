@@ -21,7 +21,7 @@ export const defaultState = {
   registrationResult: {},
   registrationFormData: {
     configurableFormFields: {
-      marketingEmailsOptIn: true,
+      marketingEmailsOptIn: false,
     },
     formFields: {
       name: '', email: '', username: '', password: '',
