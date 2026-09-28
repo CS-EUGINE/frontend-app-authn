@@ -41,11 +41,41 @@ $elevation-level-2-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
 
 .main-content {
   @extend .pt-4;
-  min-width: 464px !important;
+  width: 100%;
+  min-width: 0 !important;
+  box-sizing: border-box;
 }
 
 .welcome-page-content {
-  min-width: 464px !important;
+  width: 100%;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+.authn-shell {
+  overflow-x: hidden;
+}
+
+.authn-form-panel {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.authn-form-inner {
+  min-width: 0;
+}
+
+.authn-form-heading {
+  letter-spacing: -0.02em;
+}
+
+#sign-in,
+#register-user {
+  min-height: 3.25rem !important;
+  height: auto !important;
+  font-size: 1rem !important;
+  line-height: 1.35 !important;
+  white-space: normal;
 }
 
 .stateful-button-width {
@@ -411,6 +441,43 @@ select.form-control {
   .welcome-page-content {
     padding-top: 1.5rem !important;
   }
+
+  .authn-form-panel {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding: 1.25rem 1rem !important;
+  }
+
+  .authn-form-heading {
+    font-size: clamp(1.9rem, 8vw, 2.5rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .authn-form-inner {
+    max-width: none !important;
+  }
+
+  .pgn__form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-control {
+    min-height: 3rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+
+  .btn-social,
+  .btn-tpa {
+    width: 100%;
+    min-width: 0;
+    min-height: 2.75rem;
+  }
+
+  .alert {
+    font-size: 0.875rem;
+  }
 }
 
 
@@ -430,8 +497,18 @@ select.form-control {
 
   .welcome-page-content,
   .main-content {
-    min-width: 100vw !important;
+    width: 100% !important;
+    min-width: 0 !important;
     padding: 1.5rem !important;
+  }
+
+  .authn-form-panel {
+    padding: 1rem !important;
+  }
+
+  #sign-in,
+  #register-user {
+    width: 100% !important;
   }
 
   #password-requirement-top {

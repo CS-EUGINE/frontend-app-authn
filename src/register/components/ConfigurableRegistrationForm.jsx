@@ -44,11 +44,14 @@ const ConfigurableRegistrationForm = (props) => {
 
   const formFieldDescriptions = [];
   const honorCode = [];
+  let organizationSectionAdded = false;
   const flags = {
     showConfigurableRegistrationFields: getConfig().ENABLE_DYNAMIC_REGISTRATION_FIELDS,
     showConfigurableEdxFields: getConfig().SHOW_CONFIGURABLE_EDX_FIELDS,
     showMarketingEmailOptInCheckbox: getConfig().MARKETING_EMAILS_OPT_IN,
+    showOrganizationLeadCapture: getConfig().ENABLE_ORGANIZATION_LEAD_CAPTURE,
   };
+  const showSchoolName = flags.showOrganizationLeadCapture && formFields.organization === 'other';
 
   /**
    * If auto submitting register form, we will check tos and honor code fields if they exist for feature parity.
@@ -90,7 +93,11 @@ const ConfigurableRegistrationForm = (props) => {
         setFieldErrors(prevErrors => ({ ...prevErrors, [name]: '' }));
       }
     }
-    setFormFields(prevState => ({ ...prevState, [name]: value }));
+    setFormFields(prevState => ({
+      ...prevState,
+      [name]: value,
+      ...(name === 'organization' && value !== 'other' ? { school_name: '' } : {}),
+    }));
   };
 
   const handleOnBlur = (event) => {
@@ -112,6 +119,9 @@ const ConfigurableRegistrationForm = (props) => {
   if (flags.showConfigurableRegistrationFields) {
     Object.keys(fieldDescriptions).forEach(fieldName => {
       const fieldData = fieldDescriptions[fieldName];
+      if (fieldData.name === 'school_name') {
+        return;
+      }
       switch (fieldData.name) {
         case FIELDS.COUNTRY:
           showCountryField = true;
@@ -144,8 +154,21 @@ const ConfigurableRegistrationForm = (props) => {
           );
           break;
         default:
+          if (fieldData.name === 'organization' && flags.showOrganizationLeadCapture && !organizationSectionAdded) {
+            organizationSectionAdded = true;
+            formFieldDescriptions.push(
+              <div className="registration-lead-capture" key="organization-lead-capture-intro">
+                <div className="registration-lead-capture__title">
+                  {formatMessage(messages['registration.organization.section.title'])}
+                </div>
+                <div className="registration-lead-capture__description">
+                  {formatMessage(messages['registration.organization.section.description'])}
+                </div>
+              </div>,
+            );
+          }
           formFieldDescriptions.push(
-            <span key={fieldData.name}>
+            <span className="registration-field" key={fieldData.name}>
               <FormFieldRenderer
                 fieldData={fieldData}
                 value={formFields[fieldData.name]}
@@ -157,6 +180,26 @@ const ConfigurableRegistrationForm = (props) => {
               />
             </span>,
           );
+          if (fieldData.name === 'organization' && showSchoolName) {
+            formFieldDescriptions.push(
+              <span className="registration-field registration-school-field" key="school_name">
+                <FormFieldRenderer
+                  fieldData={{
+                    name: 'school_name',
+                    type: 'text',
+                    label: formatMessage(messages['registration.school.name.label']),
+                    instructions: formatMessage(messages['registration.school.name.instructions']),
+                  }}
+                  value={formFields.school_name || ''}
+                  onChangeHandler={handleOnChange}
+                  handleBlur={handleOnBlur}
+                  handleFocus={handleOnFocus}
+                  errorMessage={fieldErrors.school_name}
+                  isRequired
+                />
+              </span>,
+            );
+          }
       }
     });
   }
@@ -179,7 +222,7 @@ const ConfigurableRegistrationForm = (props) => {
 
   if (flags.showMarketingEmailOptInCheckbox) {
     formFieldDescriptions.push(
-      <span key="marketing_email_opt_in">
+      <span className="registration-marketing-field" key="marketing_email_opt_in">
         <FormFieldRenderer
           fieldData={{
             type: 'checkbox',
@@ -219,6 +262,7 @@ ConfigurableRegistrationForm.propTypes = {
   fieldDescriptions: PropTypes.shape({}),
   fieldErrors: PropTypes.shape({
     country: PropTypes.string,
+    school_name: PropTypes.string,
   }).isRequired,
   formFields: PropTypes.shape({
     country: PropTypes.shape({

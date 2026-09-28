@@ -2,6 +2,49 @@
   min-width: 14.4rem;
 }
 
+.registration-lead-capture {
+  border: 1px solid #d9e2f2;
+  border-left: 4px solid $primary-500;
+  border-radius: 0.5rem;
+  background: #f7faff;
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.9rem 1rem;
+}
+
+.registration-lead-capture__title {
+  color: $primary-700;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.registration-lead-capture__description {
+  color: $gray-700;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  margin-top: 0.25rem;
+}
+
+.registration-field {
+  display: block;
+}
+
+.registration-school-field {
+  animation: registration-field-in 160ms ease-out;
+}
+
+.registration-marketing-field {
+  display: block;
+  border-top: 1px solid $gray-200;
+  margin-top: 0.25rem;
+  padding-top: 0.9rem;
+}
+
+@keyframes registration-field-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .pgn__form-autosuggest__wrapper > .pgn__form-group {
   margin-bottom: 0 !important;
 }

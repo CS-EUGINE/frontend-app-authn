@@ -101,6 +101,11 @@ export const isFormValid = (
     if (fieldErrors[key]) { isValid = false; }
   });
 
+  if (configurableFormFields.organization === 'other' && !configurableFormFields.school_name?.trim()) {
+    fieldErrors.school_name = 'Please enter your school or university name.';
+    isValid = false;
+  }
+
   return { isValid, fieldErrors, emailSuggestion };
 };
 
