@@ -32,7 +32,7 @@
     "url": "https://github.com/openedx/frontend-app-authn/issues"
   },
   "dependencies": {
-    "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
+    "@edx/brand": "npm:@edly-io/indigo-brand-openedx@^2.4.2",
     "@edx/frontend-platform": "^8.0.0",
     "@edx/openedx-atlas": "^0.6.0",
     "@fortawesome/fontawesome-svg-core": "6.7.2",
@@ -42,9 +42,9 @@
     "@openedx/paragon": "^22.1.1",
     "@optimizely/react-sdk": "^2.9.1",
     "@redux-devtools/extension": "3.3.0",
+    "@tailwindcss/cli": "^4.1.7",
     "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^8.0.1",
-    "@tailwindcss/cli": "^4.1.7",
     "algoliasearch": "^4.14.3",
     "algoliasearch-helper": "^3.14.0",
     "classnames": "2.5.1",
@@ -69,8 +69,8 @@
     "redux-thunk": "2.4.2",
     "regenerator-runtime": "0.14.1",
     "reselect": "5.1.1",
-    "universal-cookie": "7.2.2",
-    "tailwindcss": "^4.1.7"
+    "tailwindcss": "^4.1.7",
+    "universal-cookie": "7.2.2"
   },
   "devDependencies": {
     "@edx/browserslist-config": "^1.1.1",

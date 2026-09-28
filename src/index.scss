@@ -1,7 +1,13 @@
 @import "~@edx/brand/paragon/fonts";
 @import "~@edx/brand/paragon/variables";
 @import "~@openedx/paragon/scss/core/core";
-@import "~@edx/brand/paragon/overrides";
+// Indigo's overrides are deliberately not imported. @edx/brand is Indigo's
+// package (tutor-indigo installs it on staging), and its overrides restyle the
+// stock split-screen login (`_login.scss`: padded pale page, corner blobs, a
+// rounded card capped at 564px) and force Inter on every element. Its selectors
+// match this fork's own layout, so they broke the design on staging. The rest
+// is courseware, header and profile styling this MFE never renders. Only the
+// variables above are wanted: they set Paragon's primary to our navy #15376D.
 
 @import "sass/style";
 
