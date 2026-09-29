@@ -442,21 +442,10 @@ select.form-control {
     padding-top: 1.5rem !important;
   }
 
-  .authn-form-panel {
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    padding: 1.25rem 1rem !important;
-  }
-
-  .authn-form-heading {
-    font-size: clamp(1.9rem, 8vw, 2.5rem) !important;
-    line-height: 1.15 !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  .authn-form-inner {
-    max-width: none !important;
-  }
+  // The form panel's padding and the heading size are set with responsive
+  // Tailwind classes in Logistration.jsx, not here. Tailwind is compiled with
+  // `important` into `@layer utilities`, and a layered !important beats any
+  // unlayered one, so overrides written here never applied.
 
   .pgn__form-group {
     margin-bottom: 1rem;
@@ -495,15 +484,12 @@ select.form-control {
     margin-right: 0 !important;
   }
 
-  .welcome-page-content,
-  .main-content {
+  // Not `.main-content`: the form panel inside it carries its own padding,
+  // and the two stacked left the fields ~250px wide on a 360px phone.
+  .welcome-page-content {
     width: 100% !important;
     min-width: 0 !important;
     padding: 1.5rem !important;
-  }
-
-  .authn-form-panel {
-    padding: 1rem !important;
   }
 
   #sign-in,
